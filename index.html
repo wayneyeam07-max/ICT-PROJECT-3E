@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>COSMIC SINGULARITY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --neon:#00ffff;
+  --violet:#7f00ff;
+  --bg:#020310;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Orbitron',sans-serif}
+body{
+  background:radial-gradient(circle at top,#0a0f3c,#000);
+  color:white;
+  overflow:hidden;
+  cursor:none;
+}
+
+/* ================= MULTIVERSE BG ================= */
+.multiverse{
+  position:fixed;inset:0;z-index:-3;
+  background:
+    radial-gradient(1px 1px at 10% 20%,#0ff,transparent),
+    radial-gradient(1px 1px at 80% 60%,#fff,transparent),
+    radial-gradient(1px 1px at 40% 90%,#7f00ff,transparent);
+  animation: drift 180s linear infinite;
+  opacity:.35;
+}
+@keyframes drift{
+  to{transform:translate(-400px,-600px)}
+}
+
+/* ================= HEADER ================= */
+header{text-align:center;padding:60px 20px}
+h1{
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  color:var(--neon);
+  text-shadow:0 0 25px var(--neon),0 0 50px var(--violet);
+  animation:glitch 2.2s infinite;
+}
+@keyframes glitch{
+  50%{text-shadow:-2px 0 magenta,2px 0 cyan}
+}
+header p{margin-top:10px;letter-spacing:5px;color:#9aefff}
+
+/* ================= LAYOUT ================= */
+.main{
+  max-width:1300px;margin:auto;
+  display:grid;
+  grid-template-columns:380px 1fr;
+  gap:30px;padding:20px;
+}
+
+/* ================= HOLOGRAM CORE ================= */
+.core{
+  position:relative;
+  height:460px;
+  border-radius:22px;
+  background:linear-gradient(180deg,#000,#03114a);
+  border:1px solid rgba(0,255,255,.35);
+  box-shadow:0 0 60px rgba(0,255,255,.35);
+  overflow:hidden;
+}
+.core::before{
+  content:"";position:absolute;inset:-50%;
+  background:conic-gradient(from 0deg,transparent,var(--neon),transparent);
+  animation:spin 5s linear infinite;
+  opacity:.35;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.core::after{
+  content:"";position:absolute;inset:3px;
+  background:radial-gradient(circle at top,#071b63,#000);
+  border-radius:20px;
+}
+
+/* ================= AVATAR ================= */
+.holo{
+  position:relative;z-index:2;
+  height:100%;display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.avatar-wrap{
+  position:relative;
+}
+.avatar{
+  width:190px;height:190px;
+  border-radius:50%;
+  object-fit:cover;
+  filter:drop-shadow(0 0 25px var(--neon));
+  transition:transform .05s linear;
+}
+.aura{
+  position:absolute;inset:-25px;
+  border-radius:50%;
+  background:radial-gradient(circle,var(--neon),transparent 60%);
+  filter:blur(25px);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{50%{opacity:.4}}
+
+.scan{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(0,255,255,.2) 0,
+    rgba(0,255,255,.2) 1px,
+    transparent 3px,
+    transparent 6px
+  );
+  animation:scan 3s linear infinite;
+}
+@keyframes scan{to{background-position-y:100%}}
+
+.holo h2{
+  margin-top:18px;
+  color:var(--neon);
+  text-shadow:0 0 15px var(--neon);
+}
+
+/* ================= PLANET ORBIT ================= */
+.orbit{
+  position:absolute;
+  width:260px;height:260px;
+  border:1px dashed rgba(0,255,255,.25);
+  border-radius:50%;
+  animation:spin 12s linear infinite;
+}
+.planet{
+  width:18px;height:18px;
+  background:linear-gradient(135deg,#0ff,#7f00ff);
+  border-radius:50%;
+  box-shadow:0 0 15px #0ff;
+  position:absolute;top:-9px;left:50%;
+  transform:translateX(-50%);
+}
+
+/* ================= INFO ================= */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.card{
+  position:relative;
+  padding:25px;
+  border-radius:16px;
+  background:linear-gradient(160deg,#000,#02143f);
+  border:1px solid rgba(0,255,255,.3);
+  overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;inset:-50%;
+  background:conic-gradient(from 0deg,transparent,var(--neon),transparent);
+  animation:spin 9s linear infinite;
+  opacity:.25;
+}
+.card::after{
+  content:"";position:absolute;inset:2px;
+  background:#040b2b;border-radius:14px;
+}
+.card>*{position:relative;z-index:2}
+.card h3{color:var(--neon);margin-bottom:10px}
+li{list-style:none;margin:8px 0}
+
+/* ================= SKILL ================= */
+.bar{height:12px;background:#000;border-radius:10px;overflow:hidden}
+.fill{
+  height:100%;width:var(--v);
+  background:linear-gradient(90deg,var(--neon),var(--violet));
+  box-shadow:0 0 15px var(--neon);
+}
+
+/* ================= NEON CURSOR ================= */
+.cursor{
+  position:fixed;width:10px;height:10px;border-radius:50%;
+  background:var(--neon);
+  box-shadow:0 0 20px var(--neon),0 0 40px var(--violet);
+  z-index:999;pointer-events:none;
+}
+.trail{
+  position:fixed;width:6px;height:6px;border-radius:50%;
+  background:var(--neon);
+  box-shadow:0 0 10px var(--neon);
+  pointer-events:none;
+}
+
+/* ================= FOOTER ================= */
+footer{text-align:center;padding:30px;color:#6abfff;font-size:.85rem}
+</style>
+</head>
+
+<body>
+<div class="multiverse"></div>
+
+<header>
+  <h1>COSMIC SINGULARITY</h1>
+  <p>FINAL EVOLUTION // REALITY BREACHED</p>
+</header>
+
+<section class="main">
+
+  <!-- CORE -->
+  <div class="core">
+    <div class="holo">
+      <div class="avatar-wrap">
+        <div class="aura"></div>
+        <img class="avatar" id="avatar"
+        src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=512&auto=format&fit=crop">
+        <div class="orbit"><div class="planet"></div></div>
+      </div>
+      <h2>NEO ASTRAL</h2>
+    </div>
+    <div class="scan"></div>
+  </div>
+
+  <!-- DATA -->
+  <div class="cards">
+    <div class="card">
+      <h3>🧬 BIODATA</h3>
+      <ul>
+        <li>Nama: Neo Astral</li>
+        <li>Entitas: AI–Human Hybrid</li>
+        <li>Asal: Cosmic Sector 9</li>
+        <li>Motto: Reality Is Optional</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🚀 RIWAYAT</h3>
+      <ul>
+        <li>Akademi Multiverse Andromeda</li>
+        <li>Nebula Cyber Institute</li>
+        <li>SMP Alpha Space</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>⚙ SKILL</h3>
+      <div class="skill">
+        HTML / CSS
+        <div class="bar"><div class="fill" style="--v:98%"></div></div>
+      </div>
+      <div class="skill">
+        Futuristic UI
+        <div class="bar"><div class="fill" style="--v:95%"></div></div>
+      </div>
+      <div class="skill">
+        Reality Bending
+        <div class="bar"><div class="fill" style="--v:140%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2099 • COSMIC SINGULARITY ACHIEVED</footer>
+
+<!-- ================= JS ================= -->
+<script>
+// NEON CURSOR
+const cursor=document.createElement('div');
+cursor.className='cursor';
+document.body.appendChild(cursor);
+
+let trails=[];
+for(let i=0;i<18;i++){
+  let t=document.createElement('div');
+  t.className='trail';
+  document.body.appendChild(t);
+  trails.push({el:t,x:0,y:0});
+}
+
+document.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px';
+  cursor.style.top=e.clientY+'px';
+
+  let x=e.clientX,y=e.clientY;
+  trails.forEach((t,i)=>{
+    t.x+=(x-t.x)*(0.2-i*0.005);
+    t.y+=(y-t.y)*(0.2-i*0.005);
+    t.el.style.left=t.x+'px';
+    t.el.style.top=t.y+'px';
+    x=t.x;y=t.y;
+  });
+
+  // AVATAR FOLLOW (EYE TRACK SIM)
+  const avatar=document.getElementById('avatar');
+  const dx=(e.clientX-window.innerWidth/2)/50;
+  const dy=(e.clientY-window.innerHeight/2)/50;
+  avatar.style.transform=`translate(${dx}px,${dy}px)`;
+});
+</script>
+</body>
+</html>
